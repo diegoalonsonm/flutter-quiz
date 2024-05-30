@@ -42,7 +42,12 @@ class _QuizState extends State<Quiz> {
     if (activeScreen == 'questions-screen') {
       screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
     } else if (activeScreen == 'results-screen') {
-      screenWidget = ResultsScreen(chosenAnswers: selectedAnswers,);
+      screenWidget = ResultsScreen(chosenAnswers: selectedAnswers, resetQuiz: () {
+        setState(() {
+          activeScreen = 'start-screen';
+          selectedAnswers = [];
+        });
+      },);
     }
 
     return MaterialApp(
